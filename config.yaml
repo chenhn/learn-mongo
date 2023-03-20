@@ -1,0 +1,5 @@
+mongo:
+  database: test_school
+  user: mongo
+  pwd: mongo
+  host: localhost:27017
