@@ -8,13 +8,20 @@ import (
 )
 
 const (
-	devCfg = "./config.yaml"
+	devCfg  = "./config.yaml"
+	testCfg = "../config.yaml"
 )
 
 // Init 读取配置文件
 // 会依次到 linux默认路径 > windows默认路径 > local 寻找配置文件，全部没找到时候panic
 func Init() {
-	cfgFile := devCfg
+	var cfgFile string
+	if os.Getenv("test") == "1" {
+		cfgFile = testCfg
+	} else {
+		cfgFile = devCfg
+	}
+
 	if _, err := os.Stat(cfgFile); err == nil {
 		initViper(cfgFile)
 		return

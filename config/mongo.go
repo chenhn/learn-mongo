@@ -21,7 +21,6 @@ func InitMongoClient() error {
 	if err != nil {
 		return err
 	}
-	defer mongoClient.Disconnect(ctx)
 	err = mongoClient.Ping(ctx, nil)
 
 	return err
